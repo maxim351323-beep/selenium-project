@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tech_world</title>
+<script src="script.js" defer></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', sans-serif; background: #f4f6f9; color: #1a1a2e; }
+  #login-screen { display: flex; align-items: center; justify-content: center; min-height: 100vh; background: #1a1a2e; }
+  #login-box { background: #fff; border-radius: 12px; padding: 40px; width: 360px; box-shadow: 0 8px 32px rgba(0,0,0,0.2); }
+  #login-box h1 { font-size: 24px; margin-bottom: 6px; color: #1a1a2e; }
+  #login-box p  { font-size: 13px; color: #888; margin-bottom: 24px; }
+  #login-box label { display: block; font-size: 13px; font-weight: 600; color: #555; margin-bottom: 6px; margin-top: 14px; }
+  #login-box input { width: 100%; padding: 10px 14px; border: 1.5px solid #ddd; border-radius: 8px; font-size: 14px; outline: none; transition: border-color .2s; }
+  #login-box input:focus { border-color: #1565C0; }
+  #login-error { color: #c0392b; font-size: 13px; margin-top: 10px; min-height: 18px; }
+  #login-btn { margin-top: 22px; width: 100%; padding: 12px; background: #1565C0; color: #fff; border: none; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer; }
+  #login-btn:hover { background: #0d47a1; }
+  #app-screen { display: none; }
+  header { background: #1a1a2e; color: #fff; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 58px; }
+  header .logo { font-size: 20px; font-weight: 700; letter-spacing: 1px; }
+  #logout-btn { background: transparent; border: 1.5px solid rgba(255,255,255,.4); color: #fff; padding: 7px 18px; border-radius: 8px; font-size: 13px; cursor: pointer; }
+  #logout-btn:hover { background: rgba(255,255,255,.1); }
+  .tab-bar { background: #fff; border-bottom: 2px solid #e0e0e0; display: flex; padding: 0 32px; gap: 4px; }
+  .tab-link { padding: 16px 22px; font-size: 15px; font-weight: 600; color: #666; text-decoration: none; border-bottom: 3px solid transparent; margin-bottom: -2px; cursor: pointer; }
+  .tab-link.active, .tab-link:hover { color: #1565C0; border-bottom-color: #1565C0; }
+  .tab-panel { display: none; padding: 36px 32px; }
+  .tab-panel.active { display: block; }
+  .panel-title { font-size: 22px; font-weight: 700; margin-bottom: 20px; }
+  .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap: 18px; }
+  .product-card { background: #fff; border: 1px solid #e0e0e0; border-radius: 10px; padding: 20px; text-align: center; }
+  .product-card .icon { font-size: 36px; margin-bottom: 10px; }
+  .product-card h3 { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
+  .product-card p  { font-size: 13px; color: #777; }
+  .product-card .price { margin-top: 12px; font-size: 16px; font-weight: 700; color: #1565C0; }
+  #contact-form { max-width: 480px; }
+  #contact-form label { display: block; font-size: 13px; font-weight: 600; color: #555; margin-bottom: 6px; margin-top: 16px; }
+  #contact-form input { width: 100%; padding: 10px 14px; border: 1.5px solid #ddd; border-radius: 8px; font-size: 14px; outline: none; }
+  #contact-form input:focus { border-color: #1565C0; }
+  #send-btn { margin-top: 22px; padding: 12px 32px; background: #1565C0; color: #fff; border: none; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer; }
+  #send-btn:hover { background: #0d47a1; }
+  #send-message { margin-top: 14px; font-size: 14px; color: #2e7d32; min-height: 20px; }
+</style>
+</head>
+<body>
+
+<div id="login-screen">
+  <div id="login-box">
+    <h1>Tech_world</h1>
+    <p>Sign in to your account</p>
+    <label for="username">Username</label>
+    <input type="text" id="username" name="username" placeholder="Enter username" autocomplete="off">
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" placeholder="Enter password">
+    <div id="login-error"></div>
+    <button type="submit" id="login-btn">Login</button>
+  </div>
+</div>
+
+<div id="app-screen">
+  <header>
+    <span class="logo">Tech_world</span>
+    <button id="logout-btn">Logout</button>
+  </header>
+
+  <nav class="tab-bar">
+    <a class="tab-link active" id="tab-cameras" href="#cameras">Cameras</a>
+    <a class="tab-link"        id="tab-lenses"  href="#lenses">Lenses</a>
+    <a class="tab-link"        id="tab-contact" href="#contact">Contact</a>
+  </nav>
+
+  <div class="tab-panel active" id="cameras">
+    <div class="panel-title">Cameras</div>
+    <div class="product-grid">
+      <div class="product-card"><div class="icon">📷</div><h3>Alpha 7 IV</h3><p>Full-frame mirrorless</p><div class="price">$2,499</div></div>
+      <div class="product-card"><div class="icon">📸</div><h3>EOS R6</h3><p>20 MP CMOS sensor</p><div class="price">$2,199</div></div>
+      <div class="product-card"><div class="icon">🎥</div><h3>Z6 III</h3><p>Nikon full-frame</p><div class="price">$1,999</div></div>
+      <div class="product-card"><div class="icon">📹</div><h3>GH6</h3><p>Micro 4/3 powerhouse</p><div class="price">$1,499</div></div>
+    </div>
+  </div>
+
+  <div class="tab-panel" id="lenses">
+    <div class="panel-title">Lenses</div>
+    <div class="product-grid">
+      <div class="product-card"><div class="icon">🔭</div><h3>50mm f/1.4</h3><p>Classic prime lens</p><div class="price">$699</div></div>
+      <div class="product-card"><div class="icon">🔬</div><h3>24-70mm f/2.8</h3><p>Versatile zoom</p><div class="price">$1,299</div></div>
+      <div class="product-card"><div class="icon">🦅</div><h3>100-400mm</h3><p>Wildlife telephoto</p><div class="price">$1,799</div></div>
+      <div class="product-card"><div class="icon">🌐</div><h3>16mm f/2.8</h3><p>Ultra-wide prime</p><div class="price">$549</div></div>
+    </div>
+  </div>
+
+  <div class="tab-panel" id="contact">
+    <div class="panel-title">Contact Us</div>
+    <form id="contact-form" onsubmit="return false;">
+      <label for="contact-name">Name</label>
+      <input type="text" id="contact-name" name="name" placeholder="Your full name">
+      <label for="contact-email">Email</label>
+      <input type="email" id="contact-email" name="email" placeholder="your@email.com">
+      <label for="contact-password">Password</label>
+      <input type="password" id="contact-password" name="contact-password" placeholder="Create password">
+      <button type="button" id="send-btn">Send Message</button>
+      <div id="send-message"></div>
+    </form>
+  </div>
+</div>
+
+</body>
+</html>
