@@ -127,7 +127,6 @@ TROUBLESHOOTING
       Make sure index.html and script.js are in the same folder.
 
 
-================================================================
+
   Submitted by: 2420067
   Date: 08.04.2026
-================================================================
