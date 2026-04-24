@@ -28,8 +28,8 @@ from selenium.common.exceptions import TimeoutException
 # Example Windows : "file:///C:/Users/YourName/Desktop/index.html"
 # Example Mac/Linux: "file:///home/yourname/project/index.html"
 BASE_URL = r"file:///C:\Users\maxim\Downloads\selenium_project\index.html"
-USERNAME = "Maksym"
-PASSWORD = "grisha1337"
+USERNAME = "admin"
+PASSWORD = "@Dm1n"
 WAIT     = 10   # seconds for explicit waits
 
 
